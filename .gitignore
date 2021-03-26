@@ -1,0 +1,13 @@
+.vscode/extensions.json
+.vscode/settings.json
+.next/react-loadable-manifest.json
+node_modules/
+.DS_Store
+*.log
+haters/
+.next/
+.build/
+layout.md
+variables.env
+*.env
+.keystone
