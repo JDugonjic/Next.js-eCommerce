@@ -6,6 +6,8 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
+import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/';
 
@@ -43,17 +45,19 @@ export default withAuth(
     lists: createSchema({
       // Schema items go in here
       User,
+      Product,
+      ProductImage,
     }),
     ui: {
       // TODO: Change this for roles
-      isAccessAllowed: ({ session }) => {
-        console.log(session);
+      isAccessAllowed: ({ session }) =>
+        // console.log(session);
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        return !!session?.data;
-      },
+        !!session?.data,
     },
 
     session: withItemData(statelessSessions(sessionConfig), {
+      // GraphQL data
       User: 'id',
     }),
   })
